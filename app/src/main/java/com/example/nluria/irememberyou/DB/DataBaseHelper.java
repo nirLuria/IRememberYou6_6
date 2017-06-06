@@ -21,6 +21,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
     public static final String Table= "Table_Of_singles";
     public static final String first_name= "FIRST_NAME";
     public static final String last_name= "LAST_NAME";
+    public static final String age="AGE";
+
 
 
     public DataBaseHelper(Context context)
@@ -31,7 +33,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create new tables.
-        db.execSQL("Create table "+ Table +" (FIRST_NAME TEXT PRIMARY KEY AUTOINCREMENT , LAST_NAME TEXT) ");
+        db.execSQL("Create table "+ Table +" (FIRST_NAME TEXT PRIMARY KEY, LAST_NAME TEXT, AGE TEXT) ");
         System.out.println("created clean database");
     }
 
@@ -42,5 +44,23 @@ public class DataBaseHelper extends SQLiteOpenHelper
         onCreate(db);
     }
 
+
+    public boolean insertNewPerson(String firstName, String lastName, String theAge)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+
+        //add the new person.
+        contentValues.put(first_name, firstName);
+        contentValues.put(last_name, lastName);
+        contentValues.put(age, theAge);
+        long result = db.insert(Table , null,contentValues );
+
+        if (result== -1)
+            return false;
+        else
+            return true;
+    }
 
 }

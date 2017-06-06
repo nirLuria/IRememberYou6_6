@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.nluria.irememberyou.DB.DataBaseHelper;
 
 /**
  * Created by nluria on 5/17/2017.
@@ -23,10 +24,14 @@ public class AddSingle extends AppCompatActivity
     private static Button submit;
     EditText ageET, firstNameET, lastNameET;
 
+    DataBaseHelper myDb;
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_single_layout);
+
+        myDb = new DataBaseHelper(this);
 
         firstNameET = (EditText)findViewById(R.id.add_first_name);
         lastNameET = (EditText)findViewById(R.id.add_last_name);
@@ -74,7 +79,10 @@ public class AddSingle extends AppCompatActivity
                 }
                 else
                 {
+                    boolean isInserted = myDb.insertNewPerson(firstName, lastName, age);
+                    System.out.println(" isInserted is: " + isInserted);
                     Toast.makeText(AddSingle.this,radio_choose.getText().toString()+", "+firstName+", "+lastName+", "+age, Toast.LENGTH_SHORT ).show();
+
                 }
 
             }
