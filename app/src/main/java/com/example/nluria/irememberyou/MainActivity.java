@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     private static Button add_single;
     Typeface buttonFont;
 
-//
+//////
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
