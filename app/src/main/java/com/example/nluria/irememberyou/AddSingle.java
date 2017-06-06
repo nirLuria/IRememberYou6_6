@@ -79,9 +79,13 @@ public class AddSingle extends AppCompatActivity
                 }
                 else
                 {
-                    boolean isInserted = myDb.insertNewPerson(firstName, lastName, age);
+                    boolean isInserted = myDb.insertNewPerson(firstName, lastName, age, radio_choose.getText().toString());
                     System.out.println(" isInserted is: " + isInserted);
+                    System.out.println(" radio_choose is: " + radio_choose);
                     Toast.makeText(AddSingle.this,radio_choose.getText().toString()+", "+firstName+", "+lastName+", "+age, Toast.LENGTH_SHORT ).show();
+                    ageET.setText("");
+                    firstNameET.setText("");
+                    lastNameET.setText("");
 
                 }
 

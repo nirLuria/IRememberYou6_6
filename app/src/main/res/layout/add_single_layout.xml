@@ -13,6 +13,7 @@
         android:id="@+id/add_first_name"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:hint="שם פרטי"
 
         />
 
@@ -24,6 +25,7 @@
         android:id="@+id/add_last_name"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:hint="שם משפחה"
 
         />
 

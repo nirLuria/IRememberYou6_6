@@ -22,6 +22,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
     public static final String first_name= "FIRST_NAME";
     public static final String last_name= "LAST_NAME";
     public static final String age="AGE";
+    public static final String gender="GENDER";
+
 
 
 
@@ -33,7 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
     @Override
     public void onCreate(SQLiteDatabase db) {
         //create new tables.
-        db.execSQL("Create table "+ Table +" (FIRST_NAME TEXT PRIMARY KEY, LAST_NAME TEXT, AGE TEXT) ");
+        db.execSQL("Create table "+ Table +" (FIRST_NAME TEXT PRIMARY KEY, LAST_NAME TEXT, AGE TEXT, GENDER TEXT) ");
         System.out.println("created clean database");
     }
 
@@ -45,7 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
     }
 
 
-    public boolean insertNewPerson(String firstName, String lastName, String theAge)
+    public boolean insertNewPerson(String firstName, String lastName, String theAge, String theGender)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -55,6 +57,16 @@ public class DataBaseHelper extends SQLiteOpenHelper
         contentValues.put(first_name, firstName);
         contentValues.put(last_name, lastName);
         contentValues.put(age, theAge);
+        if (theGender.equals("בת"))
+        {
+            contentValues.put(gender, "female");
+        }
+        else
+        {
+            contentValues.put(gender, "male");
+        }
+
+
         long result = db.insert(Table , null,contentValues );
 
         if (result== -1)
