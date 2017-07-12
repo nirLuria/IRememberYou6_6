@@ -79,6 +79,7 @@ public class AddSingle extends AppCompatActivity
                 }
                 else
                 {
+
                     boolean isInserted = myDb.insertNewPerson(firstName, lastName, age, radio_choose.getText().toString());
                     System.out.println(" isInserted is: " + isInserted);
                     System.out.println(" radio_choose is: " + radio_choose);

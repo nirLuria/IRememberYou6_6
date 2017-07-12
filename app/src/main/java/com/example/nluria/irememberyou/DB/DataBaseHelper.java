@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DataBaseHelper extends SQLiteOpenHelper
 {
 
-    public static final String DATABASE_NAME= "Singles.db";
+    public static final String DATABASE_NAME= "Singles2.db";
 
     //ID - of the group, in all tables.
 
@@ -23,19 +23,24 @@ public class DataBaseHelper extends SQLiteOpenHelper
     public static final String last_name= "LAST_NAME";
     public static final String age="AGE";
     public static final String gender="GENDER";
+    public static final String phoneNumber="PHONE_NUMBER";
+
 
 
 
 
     public DataBaseHelper(Context context)
     {
+
         super(context, DATABASE_NAME, null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
         //create new tables.
-        db.execSQL("Create table "+ Table +" (FIRST_NAME TEXT PRIMARY KEY, LAST_NAME TEXT, AGE TEXT, GENDER TEXT) ");
+        db.execSQL("Create table "+ Table +" (FIRST_NAME TEXT PRIMARY KEY, LAST_NAME TEXT, AGE TEXT, GENDER TEXT, PHONE_NUMBER TEXT) ");
         System.out.println("created clean database");
     }
 
@@ -65,6 +70,8 @@ public class DataBaseHelper extends SQLiteOpenHelper
         {
             contentValues.put(gender, "male");
         }
+        contentValues.put(phoneNumber, 132);
+
 
 
         long result = db.insert(Table , null,contentValues );
